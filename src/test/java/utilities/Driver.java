@@ -10,83 +10,54 @@ import java.time.Duration;
 
 public class Driver {
 
+
     //WebDriver tipinde bir ThreadLocal objecti olusturduk
-    //ThreadLocal ile her thread icin ayri bir WebDriver objesi olusturuyoruz
     //Bu sayede paralel test yaparken her threadin kendi webdriver objectine sahip olmasini sagladik
     //ve böylece pralel olarak calisan farkli threadler birbirlerinin webdriverlerini etkileyemezler
+    // ThreadLocal ile her thread için ayrı bir WebDriver objesi oluşturuyoruz.
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
-    private static ThreadLocal<WebDriver>driverPoll = new ThreadLocal<>();
-
-
-   // static WebDriver driver;
-
-    public static WebDriver getDriver(){
-
-        if(driverPoll.get()==null){
+    public static WebDriver getDriver() {
+        if (driverPool.get() == null) {
             // WebDriver i thread bazında oluşturuyoruz.
             switch (ConfigReader.getProperty("browser")) {
-                case "chrome" :
-                    driverPoll.set(new ChromeDriver());
+                case "chrome":
+                    driverPool.set(new ChromeDriver());
                     break;
-
-                case "edge" :
-                    driverPoll.set(new EdgeDriver());
+                case "edge":
+                    driverPool.set(new EdgeDriver());
                     break;
-
-                case "safari" :
-                    driverPoll.set(new SafariDriver());
+                case "safari":
+                    driverPool.set(new SafariDriver());
                     break;
-
-                case "firefox" :
-                    driverPoll.set(new FirefoxDriver());
+                case "firefox":
+                    driverPool.set(new FirefoxDriver());
                     break;
-
                 default:
-                    driverPoll.set(new ChromeDriver());
-
-                    // Oluşturulan WebDriveri yapılandırıyoruz
-
+                    driverPool.set(new ChromeDriver());
             }
-            driverPoll.get().manage().window().maximize();
-            driverPoll.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
+            // Oluşturulan WebDriveri yapılandırıyoruz.
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         }
         // Thread'a özgü WebDriver objecti return ediyoruz.
-        return driverPoll.get();
+        return driverPool.get();
     }
 
     private Driver() {
-        /*
-        POM de Driver classindan object olusturarak getDriver methodu kullanimini engellemeliyiz
-        Bu nedenle singleton pattern kullanimi benimsenmistir
-        Singleton Pattern : Bir classin farkli classlardan object olusturarak kullanilmasini engellemek icin kullanilir
-        bu yüzden constructor i private yaptik
-         */
+        // Singleton pattern
     }
 
-    /*
-    Driver i her cagirdigimizda yeni bir pencere acmammasi icin bir if bloğu ile ayarlama yaptik
-     if(driver==null) ile eger driver a deger atanmamis ise driver i baslat dedik, driver acik iken tekrar cagrilirsa
-     driver a deger atanmis oldugu icin if block calismayacak ve dolayisiyla bu method mevcut driver i tekar return edecek
-     Böylece ayni driver uzerinden test senaryolarimiza devam edebileceğiz
-     */
-
-    /*
-    Page Object Model de driver icin TestBase classina extends yaparak kullanmak yerine Driver classi olusturularak bu classtan
-    static method araciligi ile driver olusturup kullanmak tercih edilir
-     */
-
-    public static void closeDriver(){
+    public static void closeDriver() {
         // Açık olan WebDriver örneğini kapatıyoruz.
-        if(driverPoll.get()!=null){
-            driverPoll.get().quit();
-            driverPoll.remove();
-           // ThreadLocal'daki referansı temizliyoruz.
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove(); // ThreadLocal'daki referansı temizliyoruz.
         }
     }
-
-
-
-
-
-
 }
+   /*
+    Upload file islemleri yaparken sendKeys() methodunun yetersiz kaldigi durumlarda bu method araciligi ile yukleme yapabiliriz
+    Bu method sadece windows kullaniciliri icin gecerlidir
+     */
