@@ -9,19 +9,19 @@
 Feature:US003 Amazon Testi
 
   Background:
-  Given Kullanici amazon sayfasina gider
+  Given kullanici amazon sayfasina gider
 
   @iphone
   Scenario: TC01 arama kutusunda iphone aratilir
-    When Arama kutusunda iphone aratir
-    And Sayfayi kapatir
+    When arama kutusunda iphone aratir
+    And sayfayi kapatir
 
   @samsung
-  Scenario: TC02 arama kutusunda iphone aratilir
-    When Arama kutusunda samsung aratir
-    And Sayfayi kapatir
+  Scenario: TC02 arama kutusunda samsung aratilir
+    When arama kutusunda samsung aratir
+    And sayfayi kapatir
 
     @nokia
-  Scenario: TC03 arama kutusunda iphone aratilir
-    When Arama kutusunda nokia aratir
-    And Sayfayi kapatir
+  Scenario: TC03 arama kutusunda nokia aratilir
+    When arama kutusunda nokia aratir
+    And sayfayi kapatir

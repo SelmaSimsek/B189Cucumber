@@ -15,6 +15,7 @@ public class AmazonStepDefinition {
     @Given("kullanici amazon sayfasina gider")
     public void kullanici_amazon_sayfasina_gider() {
         Driver.getDriver().get(ConfigReader.getProperty("amazonUrl"));
+
     }
 
     @When("arama kutusunda iphone aratir")
@@ -27,6 +28,8 @@ public class AmazonStepDefinition {
     public void sayfayi_kapatir() {
         Driver.closeDriver();
     }
+
+
 
     @When("arama kutusunda samsung aratir")
     public void arama_kutusunda_samsung_aratir() {

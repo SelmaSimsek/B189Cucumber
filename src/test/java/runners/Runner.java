@@ -7,13 +7,14 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
-                "pretty", //==>console da senaryolar ile ilgili ayrintilar icin kullanilir
+                "pretty",
                 "html:target/default-cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
-                "junit:target/xml-report/cucumber.xml"},
+                "junit:target/xml-report/cucumber.xml",
+                "rerun:TestOutput/failed_scenario.txt"},
         features = "src/test/resources/features",
-        glue = "stepDefinitions",
-        tags = "@US009",
+        glue = {"stepDefinitions","hooks"},
+        tags = "@US011",
         dryRun = false,
         monochrome = true
 
@@ -30,4 +31,6 @@ gibi test ayrintilarini tanimlariz ve bazi pluginler ekleyebiliriz
 
 dryRun = true ==> iken feature file daki test senaryolarini calistirmadan, eksik
 stepDefinition i olup olmadigini kontrol eder, browser i calistirmaz
+
+rerun plugini ile fail olan scenariolari burada belirtmis oldugumuz failed_senario.txt dosyasi icinde tutabiliriz
  */

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {
                 "pretty", //==>console da senaryolar ile ilgili ayrintilar icin kullanilir
                 "html:target/default-cucumber-reports2.html",
-                "json:target/json-reports/cucumber.json",
+                "json:target/json-reports/cucumber2 .json",
                 "junit:target/xml-report/cucumber2.xml",
                 "rerun:TestOutput/failed_scenario.txt"},
         features = "src/test/resources/features",

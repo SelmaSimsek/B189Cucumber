@@ -195,7 +195,7 @@ public class ReusableMethods {
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection,null);
             //verilen stringSelection'i (bu durumda dosya yolu), daha sonra başka bir yere yapıştırmak üzere sistem panosuna kopyalamaktır.
 
-            Robot robot = new Robot();
+             Robot robot = new Robot();
             // Robot sınıfından bir object olustururuz, Bu class javadan gelir ve klavye ve mouse etkileşimlerini simüle eder.
 
             robot.keyPress(KeyEvent.VK_CONTROL);
@@ -220,6 +220,11 @@ public class ReusableMethods {
             // Herhangi bir hata oluşursa, bu hata yoksayılır.
         }
     }
+
+    /*
+    Upload file islemleri yaparken senKeys() methodunun yetersiz kaldigi durumlarda bu method araciligiyla yükleme yapilabilir
+    Bu method sadece window kullanicilari icin gecerlidir
+     */
 
 
 

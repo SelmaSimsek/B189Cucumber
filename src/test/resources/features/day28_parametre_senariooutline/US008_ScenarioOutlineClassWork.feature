@@ -7,7 +7,7 @@
 # Sayfayı kapatalım
 
 
-@US008
+  @US008
   Feature: US008 DataTables Testi
     Scenario Outline: TC01 Datatables veri girisi
       Given kullanici "https://editor.datatables.net" sayfasina gider

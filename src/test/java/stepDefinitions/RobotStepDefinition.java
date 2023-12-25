@@ -33,7 +33,6 @@ public class RobotStepDefinition {
     @When("yuklenmek istenen dosyayi yukler")
     public void yuklenmekIstenenDosyayiYukler() {
         robotPage.selectButton.click();
-
     }
 
 

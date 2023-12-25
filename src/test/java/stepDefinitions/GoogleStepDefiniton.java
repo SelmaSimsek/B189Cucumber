@@ -14,6 +14,7 @@ import java.util.List;
 
 public class GoogleStepDefiniton {
 
+
     GooglePage  googlePage = new GooglePage();
 
     @Then("sayfa basliginin {string} icerdigini test eder")
@@ -36,9 +37,8 @@ public class GoogleStepDefiniton {
         List<String> dataTableList = data.asList();
         for (int i = 0; i < dataTableList.size(); i++) {
 
+            googlePage.searchBox.sendKeys(dataTableList.get(i) +Keys.ENTER);
             Assert.assertTrue(Driver.getDriver().getTitle().contains(dataTableList.get(i)));
-
-            googlePage.searchBox.sendKeys(dataTableList.get(0) +Keys.ENTER);
             googlePage.searchBox.clear();
         }
     }

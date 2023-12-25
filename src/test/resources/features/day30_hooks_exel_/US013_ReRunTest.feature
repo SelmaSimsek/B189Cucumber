@@ -1,5 +1,5 @@
-@US013
-Feature: US013 Google Testi rerun
+@US011
+Feature: US011 Google Testi hooks
 
   Scenario: TC01 Google sayfasinda arama kutusunda arac aratilir
     Given kullanici "https://google.com" sayfasina gider

@@ -4,4 +4,4 @@ Feature: US002 Blue Rental Car Test
     Given kullanici blueRentalCar sayfasina gider
     When login butonuna tiklar
     And email ve password bilgileri ile login olur
-    And Sayfayi kapatir
+    And sayfayi kapatir

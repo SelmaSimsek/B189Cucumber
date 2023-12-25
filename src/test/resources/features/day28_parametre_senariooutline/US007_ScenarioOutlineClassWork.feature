@@ -9,7 +9,7 @@
 #| sam.walker@bluerentalcars.com | sami     |
 #| john_doe@gmail.com            | johndoe  |
 #| johnson@bluerentalcars.com    | johnson  |
-
+@US007
   Feature: US007 BlueRentalCar login islemi
     Scenario Outline: TC01 kullanici manager login bilgileriyle giris yapabilmeli
       Given kullanici "https://www.bluerentalcars.com/" sayfasina gider

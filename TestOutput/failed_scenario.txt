@@ -1,0 +1,1 @@
+file:src/test/resources/features/day28_parametre_senariooutline/US005_ParametreKullanimi.feature:4:12:20

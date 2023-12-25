@@ -1,5 +1,6 @@
+@US009
 Feature: US009 Google Testi
-  Scenario: TC01 Google sayfasinda aramayapilir
+  Scenario: TC01 Google sayfasinda arama yapilir
     Given kullanici "https://google.com" sayfasina gider
     When kullanici verilen bilgiler ile arama yapar
       | volvo |
@@ -7,7 +8,6 @@ Feature: US009 Google Testi
       | honda |
     And sayfayi kapatir
 
-Feature: US009 Google Testi
   Scenario: TC02 Google sayfasinda aramayapilir
     Given kullanici "https://google.com" sayfasina gider
     When kullanici verilen bilgiler ile arama yapar ikinci yol
